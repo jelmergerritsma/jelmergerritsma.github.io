@@ -30,9 +30,5 @@ $(function(){
 });
 
 $(document).ready(function(){
-	$("iframe").load(function() {
-		var frameContents;
-		frameContents = $("#player").contents(); 
-		frameContents.find(".controls").css("display","none");
-	});
+	
 });
