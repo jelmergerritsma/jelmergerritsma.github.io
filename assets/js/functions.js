@@ -30,5 +30,7 @@ $(function(){
 });
 
 $(document).ready(function(){
-	
+	$('button.menuButton').on('click', function(){
+		$('nav').toggleClass('open');
+	});
 });
