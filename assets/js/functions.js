@@ -24,16 +24,24 @@ $(function(){
         		$container.html($newContent);
 
       		}
-    	}
+    	},
+		onAfter: function() {
+			pageFunctions();
+		}
 	},
   	smoothState = $('#main').smoothState(options).data('smoothState');
 });
 
 $(document).ready(function(){
+	pageFunctions();
+});
 
+
+function pageFunctions() {
 	$('nav a').css('line-height',  (30 / 100) * $(window).height() + 'px');
 	
 	$('button.menuButton').on('click', function(){
+		console.log(this);
 		$('nav').toggleClass('open');
 	});
-});
+}
