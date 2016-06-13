@@ -38,10 +38,17 @@ $(document).ready(function(){
 
 
 function pageFunctions() {
-	$('nav a').css('line-height',  (30 / 100) * $(window).height() + 'px');
+	
+	$( window ).resize(function() {
+		addLineHeight();
+	});
+	addLineHeight();
 	
 	$('button.menuButton').on('click', function(){
-		console.log(this);
-		$('nav').toggleClass('open');
+		$(this).add('nav').toggleClass('open');
 	});
+}
+
+function addLineHeight() {
+	$('nav a').css('line-height',  (30 / 100) * $(window).height() + 'px');
 }
