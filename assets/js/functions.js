@@ -30,6 +30,9 @@ $(function(){
 });
 
 $(document).ready(function(){
+
+	$('nav a').css('line-height',  (30 / 100) * $(window).height() + 'px');
+	
 	$('button.menuButton').on('click', function(){
 		$('nav').toggleClass('open');
 	});

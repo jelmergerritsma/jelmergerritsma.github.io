@@ -94,7 +94,7 @@ body {
      top: 0;
      position: absolute;
      overflow: scroll;
-     transition: all ease-out 240ms;
+     transition: all ease-out 200ms;
  }  
     ul {
         display: block;
@@ -106,17 +106,40 @@ body {
             height: 0;
             height: 0vh;
             overflow: hidden;
-            transition: all ease-out 240ms;
+            transition: all ease-out 200ms;
             background: orange;
         }
             ul li a {
                 display: inline-block;
                 vertical-align: middle;
-
                 height: 100%;
                 width: 100%;
                 text-align: center;
+                background-position: center center;
+                background-size: cover;
+                color: #fff;
+                text-transform: uppercase;
+                font-size: 30px;
+                text-decoration: none;
+                position: relative;
+                overflow: hidden;
+                z-index: 2;
             }
+                ul li a:before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    background: rgba(0, 0, 0, .3);
+                    top: 0;
+                    z-index: 0;
+                }
+            ul li a:hover:before,
+            ul li a.current:before {
+                content: none;
+            }
+
 nav.open {
     height: 100vh;
 }
