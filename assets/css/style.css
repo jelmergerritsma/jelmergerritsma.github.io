@@ -336,6 +336,7 @@ nav.open {
         .content .center h2 {
             font-size: 7em;
             text-transform: uppercase;
+            font-family: "Muller";
             font-weight: 700;
         }
         .content .center p {
