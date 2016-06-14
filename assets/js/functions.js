@@ -56,6 +56,20 @@ function pageFunctions() {
 	// 		$('.video').css('background-image', 'url(' + url + ')');
 	// 	});
 	// };
+
+	$('button.playVideo').on('click', function(){
+		var options = {
+			videoId: $(this).data('video-id'),
+			width: $(window).width(),
+			wrapperZIndex: 0,
+			parameters: {
+			/* Vimeo API Options Here */
+			}
+		};
+
+		$('.video').vimelar(options);
+	});
+
 }
 
 function addLineHeight() {

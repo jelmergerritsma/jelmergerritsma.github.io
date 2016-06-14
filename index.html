@@ -11,7 +11,15 @@
   	<body>
 		<!-- Smoothstate holder -->
   		<div id="main">
-			<button class="menuButton" >Menu <span class="burger"></span></button>
+			<button class="menuButton" >Menu
+				<div class="menu">
+					<div class="bar"></div>
+					<div class="bar"></div>
+					<div class="bar"> </div>
+				</div>
+			</button>
+
+			
 			<nav>
 				<ul>
 					<li><a href="/" class="current" style="background-image: url(assets/images/contact.jpeg)"><span>Home</span></a></li>
@@ -26,19 +34,18 @@
 				<div class="center">
 					<h2>Video productions</h2>
 					<p>storyteller, cinematographer and producer</p>
-					<button>Play my showreel<span class="icon-chevron-thin-right"></span></button>
+					<button class="playVideo" data-video-id="170597694">Play my showreel<span class="icon-chevron-thin-right"></span></button>
 				</div>
 			</div>
 
-			<div class="video" data-video-id="170597694" style="background-image: url(assets/images/brouwerij.jpg)">
-				<!--<iframe src="https://player.vimeo.com/video/61293583?api=1" id="player" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
+			<div class="video" style="background-image: url(assets/images/brouwerij.jpg)">
 			</div>
    		</div>
 
     	<!-- Scripts -->
     	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     	<script src="assets/js/jquery.smoothState.min.js"></script>
-		<script src="assets/js/jquery.fitvids.js"></script>
+		<script src="assets/js/jquery.vimelar.min.js"></script>
 	    <script src="assets/js/functions.js"></script>
 	</body>
 </html>

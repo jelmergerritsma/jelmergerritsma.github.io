@@ -66,8 +66,6 @@ table {
  ---------------------------------------------------------*/
 
 body {
-    /*font-family: 'League Spartan';*/
-    /*font-family: 'Alcubierre';*/
     font-family: 'Bebas';
     font-weight: 100;
     font-size: 62.5%;
@@ -112,22 +110,83 @@ body {
 
 /** Navigation
  ---------------------------------------------------------*/
- button.menuButton {
-     position: absolute;
-     top: 30px;
-     right: 30px;
+ button {
      z-index: 2;
      background: none;
      border: none;
      color: #fff;
-     font-family: 'Alcubierre';
+     font-family: 'Bebas';
      font-size: 2em;
      text-transform: uppercase;
      cursor: pointer;
+     padding-right: 60px;
+     line-height: 50px;
  }
  button.menuButton:focus {
      outline: none;
  }
+button.menuButton {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+button .menu{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: auto;
+    border: 5px solid transparent;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    cursor: pointer;
+    display: inline-block;
+}
+    button.menuButton .menu .bar{
+        height: 5%;
+        width: 70%;
+        display: block;
+        margin: 8px auto;
+        position: relative;
+        background-color: #fff;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        -moz-transition: transform 0.4s;
+        -o-transition: transform 0.4s;
+        -webkit-transition: transform 0.4s;
+        transition: transform 0.4s;
+        overflow: hidden;
+    }
+    button.open .menu .bar:nth-of-type(1) {
+        -moz-transform: translateY(8px) rotate(45deg);
+        -ms-transform: translateY(8px) rotate(45deg);
+        -webkit-transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    button.open .menu .bar:nth-of-type(2) {
+        -moz-transform: translateX(100px);
+        -ms-transform: translateX(100px);
+        -webkit-transform: translateX(100px);
+        transform: translateX(100px);
+        -moz-transition: 0.6s;
+        -o-transition: 0.6s;
+        -webkit-transition: 0.6s;
+        transition: 0.6s;      
+    }
+    button.open .menu .bar:nth-of-type(3) {
+        -moz-transform: translateY(-13px) rotate(-45deg);
+        -ms-transform: translateY(-13px) rotate(-45deg);
+        -webkit-transform: translateY(-13px) rotate(-45deg);
+        transform: translateY(-13px) rotate(-45deg);
+    }
+
+
+
  nav {
      z-index: 1;
      width: 100vw;
@@ -204,13 +263,15 @@ nav.open {
     background-position: center center;
     background-size: cover;
 }
-    
     .video iframe {
         position: absolute;
         z-index: 1;
         width: 100%;
         height: calc(100vh + 120px);
         margin-top: -60px;
+    }
+    .video .closeVideo {
+
     }
 
 .content {
