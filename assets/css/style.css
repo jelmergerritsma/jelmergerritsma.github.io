@@ -87,6 +87,16 @@ table {
 /** Main css
  ---------------------------------------------------------*/
 
+::-moz-selection { /* Code for Firefox */
+    background: yellow;
+     color: #000;
+}
+
+::selection {
+    color: #000;
+    background: yellow;
+}
+
 body {
     /*font-family: 'Bebas';*/
     /*font-family: 'Muller';*/
@@ -271,11 +281,50 @@ button .menu{
             ul li a.current:before {
                 background: rgba(0, 0, 0, 0);
             }
+nav .center-it {
+    position: fixed;
+    left: 50%;
+    bottom: 10px;
+    -webkit-transform: translate(-50%, 150%);
+    -moz-transform: translate(-50%, 150%);
+    -ms-transform: translate(-50%, 150%);
+    -o-transform: translate(-50%, 150%);
+    transform: translate(-50%, 150%);
+}
+nav .mouse {
+    display: inline-block;
+    height: 44px;
+    width: 28px;
+    border-radius: 12px;
+    border: 2px solid #fff;
+    text-align: center;
+}
+nav .mouse:after {
+    display: inline-block;
+    height: 4px;
+    width: 4px;
+    background-color: #fff;
+    border-radius: 50%;
+    content: "";
+    -webkit-animation: scroll 1.3s ease-out infinite forwards;
+    -moz-animation: scroll 1.3s ease-out infinite forwards;
+    animation: scroll 1.3s ease-out infinite forwards;
+}
 
 nav.open {
     height: 100vh;
 }
-
+    nav.open .center-it {
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+       
+        -webkit-transition: all 240ms ease-out 240ms;
+        -moz-transition: all 240ms ease-out 240ms;
+        transition: all 240ms ease-out 240ms;
+    }
 
 /** Home
  ---------------------------------------------------------*/
@@ -416,7 +465,7 @@ nav.open {
         }
         .column1 p {
             font-size: 2.2em;
-            line-height: 1.3em;
+            line-height: 1.4em;
             margin-bottom: 15px;
         }
         .column1 button {
@@ -452,4 +501,61 @@ nav.open {
     100% { 
         transform: scale(1) translate(0, 0); 
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@-webkit-keyframes scroll {
+  0% {
+    -webkit-transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(10px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+@-moz-keyframes scroll {
+  0% {
+    -moz-transform: translateY(0);
+  }
+  50% {
+    -moz-transform: translateY(10px);
+  }
+  100% {
+    -moz-transform: translateY(0);
+  }
+}
+@keyframes scroll {
+  0% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -o-transform: translateY(10px);
+    transform: translateY(10px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
 }
