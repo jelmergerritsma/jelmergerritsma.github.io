@@ -61,13 +61,16 @@ function pageFunctions() {
 		var options = {
 			videoId: $(this).data('video-id'),
 			width: $(window).width(),
-			wrapperZIndex: 0,
-			parameters: {
-			/* Vimeo API Options Here */
-			}
+			wrapperZIndex: 0
 		};
 
 		$('.video').vimelar(options);
+		$('.closeVideo').css("left", '12px');
+	});
+
+	$('button.closeVideo').on('click', function(){
+		$('.video').css('z-index', -1).children().remove();
+		$('.closeVideo').css("left", '-60px');
 	});
 
 }

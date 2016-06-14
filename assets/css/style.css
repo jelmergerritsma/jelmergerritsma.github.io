@@ -122,13 +122,14 @@ body {
      padding-right: 60px;
      line-height: 50px;
  }
- button.menuButton:focus {
+ button:focus {
      outline: none;
  }
 button.menuButton {
     position: absolute;
     top: 30px;
     right: 30px;
+    z-index: 11;
 }
 
 button .menu{
@@ -145,7 +146,7 @@ button .menu{
     cursor: pointer;
     display: inline-block;
 }
-    button.menuButton .menu .bar{
+    button .menu .bar{
         height: 5%;
         width: 70%;
         display: block;
@@ -188,7 +189,7 @@ button .menu{
 
 
  nav {
-     z-index: 1;
+     z-index: 10;
      width: 100vw;
      height: 0px;
      top: 0;
@@ -270,9 +271,19 @@ nav.open {
         height: calc(100vh + 120px);
         margin-top: -60px;
     }
-    .video .closeVideo {
-
+    .closeVideo {
+        position: absolute;
+        top: 15px;
+        left: -60px;
+        cursor: pointer;
+        z-index: 5;
+        -webkit-transition: all 240ms ease-out;
+        -moz-transition: all 240ms ease-out;
+        transition: all 240ms ease-out;
     }
+        .closeVideo .menu .bar:nth-of-type(2) {
+            background: transparent;
+        }
 
 .content {
     position: relative;
