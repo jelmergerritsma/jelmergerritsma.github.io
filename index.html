@@ -5,7 +5,6 @@
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
     	<title>Lex van Roessel Video Production</title>
-		<link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,500,700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
   	</head>
   	<body>
@@ -14,22 +13,30 @@
 			<button class="menuButton" >Menu <span class="burger"></span></button>
 			<nav>
 				<ul>
-					<li><a href="/" class="current" style="background-image: url(assets/images/contact.jpeg)">Home</a></li>
-					<li><a href="about.html" style="background-image: url(assets/images/about.jpeg)">About</a></li>
-					<li><a href="contact.html" style="background-image: url(assets/images/contact.jpeg)">Contact</a></li>
-					<li><a href="contact.html" style="background-image: url(assets/images/about.jpeg)">Contact</a></li>
+					<li><a href="/" class="current" style="background-image: url(assets/images/contact.jpeg)"><span>Home</span></a></li>
+					<li><a href="about.html" style="background-image: url(assets/images/about.jpeg)"><span>About</span></a></li>
+					<li><a href="contact.html" style="background-image: url(assets/images/contact.jpeg)"><span>Contact</span></a></li>
+					<li><a href="contact.html" style="background-image: url(assets/images/about.jpeg)"><span>Contact</span></a></li>
 				</ul>
 			</nav>
 
-			<div class="video">
-				<iframe src="https://player.vimeo.com/video/61293583?api=1" id="player" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			<div class="content">
+				<h1>Lex van Roessel</h1>
+				<div class="center">
+					<h2>Video productions</h2>
+					<p>storyteller, cinematographer and producer</p>
+				</div>
+			</div>
+
+			<div class="video" data-video-id="170597694">
+				<!--<iframe src="https://player.vimeo.com/video/61293583?api=1" id="player" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
 			</div>
    		</div>
 
     	<!-- Scripts -->
     	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     	<script src="assets/js/jquery.smoothState.min.js"></script>
-		<script src="assets/js/jquery.vimelar.min.js"></script>
+		<script src="assets/js/jquery.fitvids.js"></script>
 	    <script src="assets/js/functions.js"></script>
 	</body>
 </html>
