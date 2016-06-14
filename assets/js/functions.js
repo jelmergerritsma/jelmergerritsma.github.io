@@ -51,7 +51,10 @@ function pageFunctions() {
 	});
 
 	// if($('.video').length) {
-	// 	$.getJSON( "http://vimeo.com/api/v2/video/" + $('.video').data('videoId') + ".json", function( data ) {
+	// 	var url = "http://vimeo.com/api/v2/video/" + $('.video').data('videoId') + ".json";
+	// 	console.log(url);
+	// 	$.getJSON( url, function( data ) {
+	// 		console.log(data);
 	// 		var url = data[0]['thumbnail_large'].replace(/640.jpg/i, "1500.jpg");
 	// 		$('.video').css('background-image', 'url(' + url + ')');
 	// 	});
