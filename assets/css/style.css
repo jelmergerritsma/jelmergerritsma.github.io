@@ -76,11 +76,11 @@ table {
 
 ::-moz-selection { /* Code for Firefox */
     background: yellow;
-     color: #000;
+     color: #333;
 }
 
 ::selection {
-    color: #000;
+    color: #333;
     background: yellow;
 }
 
@@ -91,6 +91,8 @@ body {
     font-weight: 100;
     font-size: 62.5%;
     position: relative;
+    background: url('../../assets/images/logo.png') center center fixed no-repeat;
+    background-size: 60px 60px;
 }
 
 .is-loading,
@@ -453,6 +455,32 @@ nav.open {
         }
     .column2 {
         padding-left: 50px;
+    }
+
+/** About
+ ---------------------------------------------------------*/
+.about {
+    position: absolute;
+    width: 40%;
+    height: 530px;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+    .about h1 {
+        font-family: "Muller";
+        font-size: 3.5em;
+        margin: 0 0 20px 0;
+    }
+    .about p {
+        font-size: 2.2em;
+        line-height: 1.4em;
+        margin-bottom: 15px;
+    }
+    .about p:last-child {
+        margin-bottom: 0;
     }
 
 /** Contact
