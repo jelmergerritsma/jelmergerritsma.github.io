@@ -249,14 +249,12 @@ nav.open {
             color: inherit;
             cursor: pointer;
             display: inline-block;
-            font-family: "Proxima N W02 Smbd",Helvetica,Arial,Verdana,sans-serif;
             height: 60px;
             line-height: 60px;
             outline: 0;
             padding: 0 13px 0 25px;
             position: relative;
             transition: all .3s;
-            display: none;
         }
 
 

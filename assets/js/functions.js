@@ -50,12 +50,12 @@ function pageFunctions() {
 		$(this).add('nav').toggleClass('open');
 	});
 
-	if($('.video').length) {
-		$.getJSON( "http://vimeo.com/api/v2/video/" + $('.video').data('videoId') + ".json", function( data ) {
-			var url = data[0]['thumbnail_large'].replace(/640.jpg/i, "1500.jpg");
-			$('.video').css('background-image', 'url(' + url + ')');
-		});
-	};
+	// if($('.video').length) {
+	// 	$.getJSON( "http://vimeo.com/api/v2/video/" + $('.video').data('videoId') + ".json", function( data ) {
+	// 		var url = data[0]['thumbnail_large'].replace(/640.jpg/i, "1500.jpg");
+	// 		$('.video').css('background-image', 'url(' + url + ')');
+	// 	});
+	// };
 }
 
 function addLineHeight() {
