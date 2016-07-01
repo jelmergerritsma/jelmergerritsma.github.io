@@ -87,7 +87,8 @@ table {
 body {
     /*font-family: 'Bebas';*/
     /*font-family: 'Muller';*/
-    font-family: 'Genome';
+    /*font-family: 'Genome';*/
+    font-family: "brandon-grotesque";
     font-weight: 100;
     font-size: 62.5%;
     position: relative;
@@ -132,8 +133,8 @@ body {
      background: none;
      border: none;
      color: #fff;
-     font-family: 'Genome';
      font-size: 2em;
+     font-family: "brandon-grotesque";
      text-transform: uppercase;
      cursor: pointer;
      padding-right: 60px;
@@ -445,6 +446,7 @@ h1.overlay {
     }
         .column1 h1 {
             font-family: "Muller";
+            font-weight: 700;
             font-size: 3.5em;
             margin: 0 0 20px 0;
         }
