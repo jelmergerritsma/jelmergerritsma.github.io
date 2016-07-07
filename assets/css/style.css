@@ -152,6 +152,7 @@ body {
 
 /** Navigation
  ---------------------------------------------------------*/
+ 
  button {
      z-index: 2;
      background: none;
@@ -441,13 +442,8 @@ nav.open {
         margin: auto;
         text-align: center;
     }
-        .content .center h2 {
-            font-size: 7em;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
         .content .center p {
-            margin-top: 15px;
+            margin-top: 150px;
             font-size: 2em;
         }
         .content button {
@@ -495,6 +491,15 @@ nav.open {
                 height: 100%;
             }
 
+h1.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../../assets/images/overlay.svg') center center no-repeat;
+    background-position: cover;
+}
 /** Single page
  ---------------------------------------------------------*/
  .columns {
