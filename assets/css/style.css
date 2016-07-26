@@ -571,7 +571,7 @@ h1.overlay {
         padding-right: 50px;
     }
         .column1 h1 {
-            font-family: "Muller";
+            font-family: 'Affogato-Bold';
             font-weight: 700;
             font-size: 3.5em;
             margin: 0 0 20px 0;
@@ -601,7 +601,7 @@ h1.overlay {
     margin: auto;
 }
     .about h1 {
-        font-family: "Muller";
+        font-family: 'Affogato-Bold';
         font-size: 3.5em;
         margin: 0 0 20px 0;
     }
