@@ -71,7 +71,7 @@ table {
 }*/
 
 
-@font-face {
+/*@font-face {
 	font-family: 'Coves';
 	src: url('../../assets/fonts/Coves/Coves-Light.eot');
 	src: local('Coves Light'), local('Coves-Light'),
@@ -95,8 +95,57 @@ table {
 		url('../../assets/fonts/Coves/Coves-Bold.svg#Coves-Bold') format('svg');
 	font-weight: bold;
 	font-style: normal;
-}
+}*/
 
+
+@font-face {
+    font-family: 'Affogato-Black';
+    src: url('../../assets/fonts/Affogato/Affogato-Black.eot');
+    src: url('../../assets/fonts/Affogato/Affogato-Black.eot?#iefix') format('embedded-opentype'),
+    	 url('../../assets/fonts/Affogato/Affogato-Black.woff') format('woff'),
+         url('../../assets/fonts/Affogato/Affogato-Black.woff2') format('woff2'),
+         url('../../assets/fonts/Affogato/Affogato-Black.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Affogato-Bold';
+    src: url('../../assets/fonts/Affogato/Affogato-Bold.eot');
+    src: url('../../assets/fonts/Affogato/Affogato-Bold.eot?#iefix') format('embedded-opentype'),
+    	 url('../../assets/fonts/Affogato/Affogato-Bold.woff') format('woff'),
+         url('../../assets/fonts/Affogato/Affogato-Bold.woff2') format('woff2'),
+         url('../../assets/fonts/Affogato/Affogato-Bold.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Affogato-Medium';
+    src: url('../../assets/fonts/Affogato/Affogato-Medium.eot');
+    src: url('../../assets/fonts/Affogato/Affogato-Medium.eot?#iefix') format('embedded-opentype'),
+    	 url('../../assets/fonts/Affogato/Affogato-Medium.woff') format('woff'),
+         url('../../assets/fonts/Affogato/Affogato-Medium.woff2') format('woff2'),
+         url('../../assets/fonts/Affogato/Affogato-Medium.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Affogato-Regular';
+    src: url('../../assets/fonts/Affogato/Affogato-Regular.eot');
+    src: url('../../assets/fonts/Affogato/Affogato-Regular.eot?#iefix') format('embedded-opentype'),
+    	 url('../../assets/fonts/Affogato/Affogato-Regular.woff') format('woff'),
+         url('../../assets/fonts/Affogato/Affogato-Regular.woff2') format('woff2'),
+         url('../../assets/fonts/Affogato/Affogato-Regular.ttf')  format('truetype');
+}
+@font-face {
+    font-family: 'Affogato-Light';
+    src: url('../../assets/fonts/Affogato/Affogato-Light.eot');
+    src: url('../../assets/fonts/Affogato/Affogato-Light.eot?#iefix') format('embedded-opentype'),
+    	 url('../../assets/fonts/Affogato/Affogato-Light.woff') format('woff'),
+         url('../../assets/fonts/Affogato/Affogato-Light.woff2') format('woff2'),
+         url('../../assets/fonts/Affogato/Affogato-Light.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 /** Main css
  ---------------------------------------------------------*/
@@ -112,8 +161,7 @@ table {
 }
 
 body {
-    /*font-family: "brandon-grotesque";*/
-    font-family: 'Coves';
+    font-family: 'Affogato-Regular';
     font-size: 62.5%;
     position: relative;
     background: url('../../assets/images/logo.png') center center fixed no-repeat;
@@ -429,6 +477,7 @@ nav.open {
         font-weight: bold;
         text-transform: uppercase;
         margin: 40px 0 0 30px;
+        font-family: 'Affogato-Bold';
     }
     .content .center {
         width: 770px;
