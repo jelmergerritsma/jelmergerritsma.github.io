@@ -81,3 +81,7 @@ function pageFunctions() {
 function addLineHeight() {
 	$('nav a').css('line-height',  (30 / 100) * $(window).height() + 'px');
 }
+
+Pace.on('done', function(){
+	$('#main').show();
+})
