@@ -469,10 +469,10 @@ nav.open {
     .content > h1:hover svg {
         transform: rotate(360deg);
     }
-        .content > h1 svg path {
+        /*.content > h1 svg path {
             fill: #c0392b;
             stroke: transparent;
-        }
+        }*/
         
     .content .center {
         width: 770px;
