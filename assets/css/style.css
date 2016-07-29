@@ -771,7 +771,16 @@ nav.open {
     }
 }
 
+@media screen and (max-width: 1024px) {
+    .video.cd-intro-content svg.svg-mask {
+        zoom: 1;
+    }
+}
+
 @media screen and (max-width: 850px) {
+    .video.cd-intro-content svg.svg-mask {
+        zoom: .6;
+    }
     .content .center {
         width: 100%;
     }
@@ -793,7 +802,10 @@ nav.open {
         color: transparent;
         text-shadow: none;
     }
-    .svg-mask {
+    .video.cd-intro-content svg.svg-mask {
+        zoom: .4;
+    }
+    .cd-bg-video-wrapper video {
         display: none;
     }
     .content h1 {
