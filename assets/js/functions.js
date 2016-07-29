@@ -1,3 +1,11 @@
+/* WELCOME MESSAGE, it had to be done */
+console.log('%cMade %cby  %cJELMERGERRITSMA.NL ', 
+			'font-family: Calibri, Helvetica; color: #555; font-weight:bold;',
+			'font-family: Calibri, Helvetica; color: #555;',
+			'font-family: Calibri, Helvetica; color: #c0392b; font-weight:800; font-size: 17px; letter-spacing:-2px;'
+);
+
+
 $(function(){
 	'use strict';
   	var options = {
@@ -40,11 +48,6 @@ $(document).ready(function(){
 function pageFunctions() {
 	
 	// $(".video").fitVids();
-
-	$( window ).resize(function() {
-		addLineHeight();
-	});
-	addLineHeight();
 	
 	$('button.menuButton').on('click', function(){
 		$(this).add('nav').toggleClass('open');
@@ -95,25 +98,20 @@ function pageFunctions() {
 	});
 }
 
-function addLineHeight() {
-	$('nav a').css({
-		'background-image': ''
-	});
-}
-
 Pace.on('done', function(){
 	$('#main').show();
 })
 
 function muteVideo(video){
-	video.volume = 0;
+	var volume = video.volume;
+
 	if(video.muted){
+		video.volume = 0;
 		video.muted = false;
 
 		var vol = 0;
-		var interval = 200;
-
-		var fadeout = setInterval(
+		var interval = 50;
+		var fadein = setInterval(
 			function() {
 				if (vol < 1) {
 					video.volume = vol;
@@ -124,35 +122,26 @@ function muteVideo(video){
 				}
 			}, 
 		interval);
-
 	} else {
-		video.volume = 0;
-		video.muted = true;
+
+		var vol = video.volume;
+		var interval = 50;
+		var fadeout = setInterval(
+			function() {
+				if (vol > 0) {
+					video.volume = vol;
+					vol -= 0.05;
+				}
+				else {
+					muteAll(video);
+					clearInterval(fadeout);
+				}
+			}, 
+		interval);
 	}
 }
 
-
-/* WELCOME MESSAGE, it had to be done */
-console.log('%cMade %cby  %cJelmerGerritsma.nl ', 
-			'font-family: Calibri, Helvetica; color: #555; font-weight:bold;',
-			'font-family: Calibri, Helvetica; color: #555;',
-			'font-family: Calibri, Helvetica; color: #c0392b; font-weight:800; font-size: 17px; letter-spacing:-2px;'
-);
-
-/*
-
-//this is used for the video effect only
-				 if( $('.cd-bg-video-wrapper').length > 0 ) {
-				 	var videoWrapper = $('.cd-bg-video-wrapper'),
-				 		mq = window.getComputedStyle(document.querySelector('.cd-bg-video-wrapper'), '::after').getPropertyValue('content').replace(/"/g, "").replace(/'/g, "");
-				 	if( mq == 'desktop' ) {
-				 		// we are not on a mobile device 
-				 		var	videoUrl = videoWrapper.data('video'),
-				 			video = $('<video id="video" loop muted><source src="'+videoUrl+'.mp4" type="video/mp4" /><source src="'+videoUrl+'.webm" type="video/webm" /></video>');
-				 		video.appendTo(videoWrapper);
-				 		video.get(0).play();
-				 	}
-				 }
-
-
-				 */ 
+function muteAll(video) {
+	video.volume = 0;
+	video.muted = true;
+}
