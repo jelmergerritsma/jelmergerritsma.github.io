@@ -167,10 +167,6 @@ body {
     height: 150px;
     margin: -75px 0 0 -75px;
 }
-    .preloader svg path {
-        fill: #c0392b;
-        stroke: #c0392b;
-    } 
 
 .is-loading,
 .is-loading a {
@@ -473,10 +469,10 @@ nav.open {
     .content > h1:hover svg {
         transform: rotate(360deg);
     }
-        .content > h1 svg path {
+        /*.content > h1 svg path {
             fill: #c0392b;
             stroke: transparent;
-        }
+        }*/
         
     .content .center {
         width: 770px;
