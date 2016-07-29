@@ -793,6 +793,9 @@ nav.open {
         color: transparent;
         text-shadow: none;
     }
+    .svg-mask {
+        display: none;
+    }
     .content h1 {
         margin-top: 40px;
         font-size: 2em;
@@ -803,6 +806,10 @@ nav.open {
     }
         .content .center h2 {
             font-size: 3em;
+        }
+        .content .center p {
+            padding-left: 30px;
+            padding-right: 30px;
         }
     .about {
         padding: 0px 30px 50px 30px;
