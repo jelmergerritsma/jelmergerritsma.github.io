@@ -419,7 +419,7 @@ nav.open {
     .closeVideo {
         position: absolute;
         top: 34px;
-        left: -60px;
+        left: -70px;
         cursor: pointer;
         z-index: 5;
         -webkit-transition: all 240ms ease-out;
@@ -775,7 +775,7 @@ nav.open {
         }
     .about {
         width: 90%;
-        padding: 0 5% 0 5%;
+        padding: 90px 5% 0 5%;
         top: 70px;
         overflow-x: hidden;
         overflow-y: scroll;

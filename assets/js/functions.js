@@ -77,10 +77,10 @@ function pageFunctions() {
 		if(!$(this).hasClass('home')) {
 			$('.video').css('z-index', -1).children().remove();
 			$('.columns').fadeToggle();
-			$('.closeVideo').css("left", '-60px');
+			$('.closeVideo').css("left", '-70px');
 		}else {
 			$('.svg-mask, .content .center').fadeToggle();
-			$('.closeVideo').css("left", '-60px');
+			$('.closeVideo').css("left", '-70px');
 			muteVideo(document.getElementById("video"));
 		}
 		$('.content > h1').css('left', '0');
