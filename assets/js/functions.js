@@ -104,9 +104,27 @@ Pace.on('done', function(){
 })
 
 function muteVideo(video){
+	video.volume = 0;
 	if(video.muted){
 		video.muted = false;
+
+		var vol = 0;
+		var interval = 200;
+
+		var fadeout = setInterval(
+			function() {
+				if (vol < 1) {
+					video.volume = vol;
+					vol += 0.05;
+				}
+				else {
+					clearInterval(fadeout);
+				}
+			}, 
+		interval);
+
 	} else {
+		video.volume = 0;
 		video.muted = true;
 	}
 }
