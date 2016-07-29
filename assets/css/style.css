@@ -272,6 +272,9 @@ button .menu{
         -webkit-transition: transform 0.4s;
         transition: transform 0.4s;
         overflow: hidden;
+        -webkit-transition: all 140ms ease-out;
+        -moz-transition: all 140ms ease-out;
+        transition: all 140ms ease-out;
     }
     button.open .menu .bar:nth-of-type(1) {
         -moz-transform: translateY(8px) rotate(45deg);
@@ -296,8 +299,9 @@ button .menu{
         -webkit-transform: translateY(-13px) rotate(-45deg);
         transform: translateY(-13px) rotate(-45deg);
     }
-
-
+button:hover .bar {
+    background-color: #c0392b;
+}
 
  nav {
      z-index: 10;
@@ -789,7 +793,7 @@ nav.open {
             font-size: 3em;
         }
     .about {
-        padding: 0px 5% 0 5%;
+        padding: 0px 5% 50px 5%;
     }
 }
 
