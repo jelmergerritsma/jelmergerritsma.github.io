@@ -69,7 +69,7 @@ function pageFunctions() {
 
 		$('.video').vimelar(options);
 		$('.columns').fadeToggle();
-		$('.content > h1').css('transform', 'translateX(-280px)');
+		$('.content > h1').css('left', '-320px');
 		$('.closeVideo').css("left", '12px');
 	});
 
@@ -83,12 +83,12 @@ function pageFunctions() {
 			$('.closeVideo').css("left", '-60px');
 			muteVideo(document.getElementById("video"));
 		}
-		$('.content > h1').css('transform', 'translateX(0)');
+		$('.content > h1').css('left', '0');
 	});
 
 	$('button.hideOverlay').on('click', function(){
 		$('.svg-mask, .content .center').fadeToggle();
-		$('.content > h1').css('transform', 'translateX(-280px)');
+		$('.content > h1').css('left', '-320px');
 		$('.closeVideo').css("left", '8px');
 		muteVideo(document.getElementById("video"));
 		event.preventDefault();
