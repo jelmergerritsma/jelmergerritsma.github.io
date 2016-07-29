@@ -6,6 +6,10 @@ console.log('%cMade %cby  %cJELMERGERRITSMA.NL ',
 );
 
 
+var md = new MobileDetect(window.navigator.userAgent);
+
+
+
 $(function(){
 	'use strict';
   	var options = {
@@ -63,40 +67,51 @@ function pageFunctions() {
 	 	});
 	};
 */
+	
 
-	$('button.playVideo').on('click', function(){
-		var options = {
-			videoId: $(this).data('video-id'),
-			width: $(window).width(),
-			wrapperZIndex: 0
-		};
+	
+	if(md.mobile()) {
+		$('button.hideOverlay, button.playVideo').on('click', function(){
+			console.log($(this).data('vimeourl'));
+			var win = window.open($(this).data('vimeourl'), '_blank');
+			win.focus();
+			return;
+		})
+	} else {
+		$('button.playVideo').on('click', function(){
+			var options = {
+				videoId: $(this).data('video-id'),
+				width: $(window).width(),
+				wrapperZIndex: 0
+			};
 
-		$('.video').vimelar(options);
-		$('.columns').fadeToggle();
-		$('.content a > h1').css('left', '-340px');
-		$('.closeVideo').css("left", '12px');
-	});
-
-	$('button.closeVideo').on('click', function(){
-		if(!$(this).hasClass('home')) {
-			$('.video').css('z-index', -1).children().remove();
+			$('.video').vimelar(options);
 			$('.columns').fadeToggle();
-			$('.closeVideo').css("left", '-70px');
-		}else {
-			$('.svg-mask, .content .center').fadeToggle();
-			$('.closeVideo').css("left", '-70px');
-			muteVideo(document.getElementById("video"));
-		}
-		$('.content a > h1').css('left', '0');
-	});
+			$('.content a > h1').css('left', '-340px');
+			$('.closeVideo').css("left", '12px');
+		});
 
-	$('button.hideOverlay').on('click', function(){
-		$('.svg-mask, .content .center').fadeToggle();
-		$('.content a > h1').css('left', '-340px');
-		$('.closeVideo').css("left", '8px');
-		muteVideo(document.getElementById("video"));
-		event.preventDefault();
-	});
+		$('button.closeVideo').on('click', function(){
+			if(!$(this).hasClass('home')) {
+				$('.video').css('z-index', -1).children().remove();
+				$('.columns').fadeToggle();
+				$('.closeVideo').css("left", '-70px');
+			}else {
+				$('.svg-mask, .content .center').fadeToggle();
+				$('.closeVideo').css("left", '-70px');
+				muteVideo(document.getElementById("video"));
+			}
+			$('.content a > h1').css('left', '0');
+		});
+
+		$('button.hideOverlay').on('click', function(){
+			$('.svg-mask, .content .center').fadeToggle();
+			$('.content a > h1').css('left', '-340px');
+			$('.closeVideo').css("left", '8px');
+			muteVideo(document.getElementById("video"));
+			event.preventDefault();
+		});
+	}
 }
 
 Pace.on('done', function(){
