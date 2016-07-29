@@ -127,13 +127,11 @@ table {
  ---------------------------------------------------------*/
 
 ::-moz-selection { /* Code for Firefox */
-    background: yellow;
-     color: #333;
+    background: #c0392b;
 }
 
 ::selection {
-    color: #333;
-    background: yellow;
+    background: #c0392b;
 }
 
 ::-webkit-scrollbar {
@@ -169,6 +167,10 @@ body {
     height: 150px;
     margin: -75px 0 0 -75px;
 }
+    .preloader svg path {
+        fill: #c0392b;
+        stroke: #c0392b;
+    } 
 
 .is-loading,
 .is-loading a {
@@ -236,14 +238,9 @@ button.menuButton {
     -o-transform: translateX(280px);
     transform: translateX(280px);
 
-    -webkit-animation: slideinFromRight .8s ease-out forwards;
-    -moz-animation: slideinFromRight .8s ease-out forwards;
-    animation: slideinFromRight .8s ease-out forwards;
-
-    -webkit-animation-delay: .5s;
-    -moz-animation-delay: .5s;
-    animation-delay: .5s;
-
+    -webkit-animation: slideinFromRight .8s ease-out forwards .5s;
+    -moz-animation: slideinFromRight .8s ease-out forwards .5s;
+    animation: slideinFromRight .8s ease-out forwards .5s;
 }
 
 button .menu{
@@ -310,6 +307,7 @@ button .menu{
      position: absolute;
      overflow-y: scroll;
      transition: all ease-out 200ms;
+     background: #000;
  }  
 
 
@@ -333,16 +331,23 @@ button .menu{
 
     nav ul {
         display: block;
-        height: 100%;
-        width: 100%;
+        height: 300px;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
     }
         nav ul li {
             display: block;
             height: 0;
-            height: 30vh;
+            height: 45px;
             overflow: hidden;
-            transition: all ease-out 200ms;
         }
+            nav ul li:hover a {
+                color: #c0392b;
+            }
             nav ul li a {
                 display: inline-block;
                 vertical-align: middle;
@@ -359,56 +364,16 @@ button .menu{
                 overflow: hidden;
                 z-index: 0;
                 font-family: "Affogato-Regular";
+                background: transparent;
+                line-height: 45px;
+                -webkit-transition: all 140ms ease-out;
+                -moz-transition: all 140ms ease-out;
+                transition: all 140ms ease-out;
             }
                 nav ul li a span {
                     position: relative;
                     z-index: 2;
                 }
-
-                nav ul li a:before {
-                    content: "";
-                    display: block;
-                    position: absolute;
-                    height: 100%;
-                    width: 100%;
-                    background: rgba(0, 0, 0, .5);
-                    top: 0;
-                    z-index: 0;
-                    transition: all ease-out 240ms;
-                }
-            nav ul li a:hover:before,
-            nav ul li a.current:before {
-                background: rgba(0, 0, 0, 0);
-            }
-nav .center-it {
-    position: fixed;
-    left: 50%;
-    bottom: 10px;
-    -webkit-transform: translate(-50%, 150%);
-    -moz-transform: translate(-50%, 150%);
-    -ms-transform: translate(-50%, 150%);
-    -o-transform: translate(-50%, 150%);
-    transform: translate(-50%, 150%);
-}
-nav .mouse {
-    display: inline-block;
-    height: 44px;
-    width: 28px;
-    border-radius: 12px;
-    border: 2px solid #fff;
-    text-align: center;
-}
-nav .mouse:after {
-    display: inline-block;
-    height: 4px;
-    width: 4px;
-    background-color: #fff;
-    border-radius: 50%;
-    content: "";
-    -webkit-animation: scroll 1.3s ease-out infinite forwards;
-    -moz-animation: scroll 1.3s ease-out infinite forwards;
-    animation: scroll 1.3s ease-out infinite forwards;
-}
 
 nav.open {
     height: 100vh;
@@ -478,19 +443,15 @@ nav.open {
         transition: all 240ms ease-out;
     }
     .content > h1 {
-        -webkit-transform: translateX(-320px);
-        -moz-transform: translateX(-320px);
-        -ms-transform: translateX(-320px);
-        -o-transform: translateX(-320px);
-        transform: translateX(-320px);
+        -webkit-transform: translateX(-340px);
+        -moz-transform: translateX(-340px);
+        -ms-transform: translateX(-340px);
+        -o-transform: translateX(-340px);
+        transform: translateX(-340px);
 
-        -webkit-animation: slideinFromLeft .8s ease-out forwards;
-        -moz-animation: slideinFromLeft .8s ease-out forwards;
-        animation: slideinFromLeft .8s ease-out forwards;
-
-        -webkit-animation-delay: .5s;
-        -moz-animation-delay: .5s;
-        animation-delay: .5s;
+        -webkit-animation: slideinFromLeft .8s ease-out forwards .5s;
+        -moz-animation: slideinFromLeft .8s ease-out forwards .5s;
+        animation: slideinFromLeft .8s ease-out forwards .5s;
 
         line-height: 35px;
         display: inline-block;
@@ -529,13 +490,9 @@ nav.open {
             font-size: 2em;
             opacity: 0;
             margin-top: 50px;
-            -webkit-animation: fadeFromBottom .8s ease-out forwards;
-            -moz-animation: fadeFromBottom .8s ease-out forwards;
-            animation: fadeFromBottom .8s ease-out forwards;
-
-            -webkit-animation-delay: .5s;
-            -moz-animation-delay: .5s;
-            animation-delay: .5s;
+            -webkit-animation: fadeFromBottom .8s ease-out forwards .5s;
+            -moz-animation: fadeFromBottom .8s ease-out forwards .5s;
+            animation: fadeFromBottom .8s ease-out forwards .5s;
         }
         .content button {
             background: 0 0;
@@ -557,13 +514,9 @@ nav.open {
             z-index: 0;
             margin-top: 40px;
             opacity: 0;
-            -webkit-animation: fadeFromBottom .8s ease-out forwards;
-            -moz-animation: fadeFromBottom .8s ease-out forwards;
-            animation: fadeFromBottom .8s ease-out forwards;
-
-            -webkit-animation-delay: .7s;
-            -moz-animation-delay: .7s;
-            animation-delay: .7s;
+            -webkit-animation: fadeFromBottom .8s ease-out forwards .7s;
+            -moz-animation: fadeFromBottom .8s ease-out forwards .7s;
+            animation: fadeFromBottom .8s ease-out forwards .7s;
         }
         .content button:hover {
             color: #000;
@@ -637,7 +590,6 @@ nav.open {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: url(../assets/bg-img.jpg) no-repeat center center;
   background-size: cover;
 }
 .cd-bg-video-wrapper video {
@@ -700,13 +652,9 @@ nav.open {
 
             opacity: 0;
         
-            -webkit-animation: fadeFromBottom .8s ease-out forwards;
-            -moz-animation: fadeFromBottom .8s ease-out forwards;
-            animation: fadeFromBottom .8s ease-out forwards;
-
-            -webkit-animation-delay: .5s;
-            -moz-animation-delay: .5s;
-            animation-delay: .5s;
+            -webkit-animation: fadeFromBottom .8s ease-out forwards .5s;
+            -moz-animation: fadeFromBottom .8s ease-out forwards .5s;
+            animation: fadeFromBottom .8s ease-out forwards .5s;
         }
         .column1 p {
             font-size: 2.2em;
@@ -716,13 +664,9 @@ nav.open {
 
             opacity: 0;
         
-            -webkit-animation: fadeFromBottom .8s ease-out forwards;
-            -moz-animation: fadeFromBottom .8s ease-out forwards;
-            animation: fadeFromBottom .8s ease-out forwards;
-
-            -webkit-animation-delay: .5s;
-            -moz-animation-delay: .5s;
-            animation-delay: .5s;
+            -webkit-animation: fadeFromBottom .8s ease-out forwards .5s;
+            -moz-animation: fadeFromBottom .8s ease-out forwards .5s;
+            animation: fadeFromBottom .8s ease-out forwards .5s;
         }
         .column1 button {
             float: right;
@@ -750,14 +694,9 @@ nav.open {
 
         opacity: 0;
         
-        -webkit-animation: fadeFromBottom .8s ease-out forwards;
-        -moz-animation: fadeFromBottom .8s ease-out forwards;
-        animation: fadeFromBottom .8s ease-out forwards;
-
-        -webkit-animation-delay: .5s;
-        -moz-animation-delay: .5s;
-        animation-delay: .5s;
-        
+        -webkit-animation: fadeFromBottom .8s ease-out forwards .5s;
+        -moz-animation: fadeFromBottom .8s ease-out forwards .5s;
+        animation: fadeFromBottom .8s ease-out forwards .5s;
     }
     .about p {
         font-size: 2.2em;
@@ -766,13 +705,9 @@ nav.open {
 
         opacity: 0;
 
-        -webkit-animation: fadeFromBottom .8s ease-out forwards;
-        -moz-animation: fadeFromBottom .8s ease-out forwards;
-        animation: fadeFromBottom .8s ease-out forwards;
-
-        -webkit-animation-delay: .7s;
-        -moz-animation-delay: .7s;
-        animation-delay: .7s;
+        -webkit-animation: fadeFromBottom .8s ease-out forwards .7s;
+        -moz-animation: fadeFromBottom .8s ease-out forwards .7s;
+        animation: fadeFromBottom .8s ease-out forwards .7s;
     }
     .about p:last-child {
         margin-bottom: 0;
@@ -974,7 +909,7 @@ nav.open {
 /* Slide content in from left */
 @-webkit-keyframes slideinFromLeft {
     0% {
-        -webkit-transform: translateX(-320px);
+        -webkit-transform: translateX(-340px);
     }
     100% {
         -webkit-transform: translateX(0);
@@ -982,7 +917,7 @@ nav.open {
 }
 @-moz-keyframes slideinFromLeft {
     0% {
-        -moz-transform: translateX(-320px);
+        -moz-transform: translateX(-340px);
         opacity: 0;
     }
     100% {
@@ -992,11 +927,11 @@ nav.open {
 }
 @keyframes slideinFromLeft {
     0% {
-        -webkit-transform: translateX(-320px);
-        -moz-transform: translateX(-320px);
-        -ms-transform: translateX(-320px);
-        -o-transform: translateX(-320px);
-        transform: translateX(-320px);
+        -webkit-transform: translateX(-340px);
+        -moz-transform: translateX(-340px);
+        -ms-transform: translateX(-340px);
+        -o-transform: translateX(-340px);
+        transform: translateX(-340px);
         opacity: 0;
     }
     100% {

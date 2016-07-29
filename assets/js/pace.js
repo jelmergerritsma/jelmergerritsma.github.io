@@ -154,7 +154,7 @@
             
             var scrollPercentage = this.progress / 100;
             var drawLength = pathLength * scrollPercentage;
-            path.style.stroke = "black";
+            path.style.stroke = "#c0392b";
             path.style.strokeDashoffset = pathLength - drawLength / 4;
                 
             if(scrollPercentage < 0.7) {
@@ -168,13 +168,13 @@
                 
                 var fillPercentage = (100 - (((pathLength - (pathLength * scrollPercentage)) / lastLength) * 100)) / 100;
                 
-                sun.style.fill = "rgba(0,0,0," + fillPercentage + ")";
-                snow.style.fill = "rgba(0,0,0," + fillPercentage + ")";
-                path.style.fill = "rgba(0,0,0," + fillPercentage + ")";
+                sun.style.fill = "rgba(192, 57, 43," + fillPercentage + ")";
+                snow.style.fill = "rgba(192, 57, 43," + fillPercentage + ")";
+                path.style.fill = "rgba(192, 57, 43," + fillPercentage + ")";
             } else if (scrollPercentage >= 0.99) {
                 path.style.strokeDasharray = "none";
-                sun.style.fill = "rgba(0,0,0,1)";
-                snow.style.fill = "rgba(0,0,0,1)";
+                sun.style.fill = "rgba(192, 57, 43,1)";
+                snow.style.fill = "rgba(192, 57, 43,1)";
             } else {
                 path.style.strokeDasharray = pathLength + ' ' + pathLength;
             }

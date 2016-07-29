@@ -69,7 +69,7 @@ function pageFunctions() {
 
 		$('.video').vimelar(options);
 		$('.columns').fadeToggle();
-		$('.content > h1').css('left', '-320px');
+		$('.content > h1').css('left', '-340px');
 		$('.closeVideo').css("left", '12px');
 	});
 
@@ -88,7 +88,7 @@ function pageFunctions() {
 
 	$('button.hideOverlay').on('click', function(){
 		$('.svg-mask, .content .center').fadeToggle();
-		$('.content > h1').css('left', '-320px');
+		$('.content > h1').css('left', '-340px');
 		$('.closeVideo').css("left", '8px');
 		muteVideo(document.getElementById("video"));
 		event.preventDefault();
@@ -96,7 +96,9 @@ function pageFunctions() {
 }
 
 function addLineHeight() {
-	$('nav a').css('line-height',  (30 / 100) * $(window).height() + 'px');
+	$('nav a').css({
+		'background-image': ''
+	});
 }
 
 Pace.on('done', function(){
@@ -128,6 +130,14 @@ function muteVideo(video){
 		video.muted = true;
 	}
 }
+
+
+/* WELCOME MESSAGE, it had to be done */
+console.log('%cMade %cby  %cJelmerGerritsma.nl ', 
+			'font-family: Calibri, Helvetica; color: #555; font-weight:bold;',
+			'font-family: Calibri, Helvetica; color: #555;',
+			'font-family: Calibri, Helvetica; color: #c0392b; font-weight:800; font-size: 17px; letter-spacing:-2px;'
+);
 
 /*
 
