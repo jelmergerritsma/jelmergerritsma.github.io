@@ -781,6 +781,14 @@ nav.open {
         overflow-y: scroll;
         padding-bottom: 30px;
     }
+    .column1, .column2 {
+        width: 100%;
+        height: 100%;
+        overflow: scroll;
+        padding: 70px 50px 50px 50px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
 }
 
 @media screen and (max-width: 425px) {
@@ -799,15 +807,6 @@ nav.open {
         .content .center h2 {
             font-size: 3em;
         }
-    
-    .column1, .column2 {
-        width: 100%;
-        height: 100%;
-        overflow: scroll;
-        padding: 70px 50px 50px 50px;
-        overflow-x: hidden;
-        overflow-y: scroll;
-    }
 }
 
 
