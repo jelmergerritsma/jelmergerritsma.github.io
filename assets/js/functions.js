@@ -53,15 +53,16 @@ function pageFunctions() {
 		$(this).add('nav').toggleClass('open');
 	});
 
-	// if($('.video').length) {
-	// 	var url = "http://vimeo.com/api/v2/video/" + $('.video').data('videoId') + ".json";
-	// 	console.log(url);
-	// 	$.getJSON( url, function( data ) {
-	// 		console.log(data);
-	// 		var url = data[0]['thumbnail_large'].replace(/640.jpg/i, "1500.jpg");
-	// 		$('.video').css('background-image', 'url(' + url + ')');
-	// 	});
-	// };
+/*	if($('.video').length) {
+	 	var url = "http://vimeo.com/api/v2/video/" + $('.video').data('videoId') + ".json";
+	 	console.log(url);
+	 	$.getJSON( url, function( data ) {
+	 		console.log(data);
+	 		var url = data[0]['thumbnail_large'].replace(/640.jpg/i, "1500.jpg");
+	 		$('.video').css('background-image', 'url(' + url + ')');
+	 	});
+	};
+*/
 
 	$('button.playVideo').on('click', function(){
 		var options = {
@@ -72,7 +73,7 @@ function pageFunctions() {
 
 		$('.video').vimelar(options);
 		$('.columns').fadeToggle();
-		$('.content > h1').css('left', '-340px');
+		$('.content a > h1').css('left', '-340px');
 		$('.closeVideo').css("left", '12px');
 	});
 
@@ -86,12 +87,12 @@ function pageFunctions() {
 			$('.closeVideo').css("left", '-70px');
 			muteVideo(document.getElementById("video"));
 		}
-		$('.content > h1').css('left', '0');
+		$('.content a > h1').css('left', '0');
 	});
 
 	$('button.hideOverlay').on('click', function(){
 		$('.svg-mask, .content .center').fadeToggle();
-		$('.content > h1').css('left', '-340px');
+		$('.content a > h1').css('left', '-340px');
 		$('.closeVideo').css("left", '8px');
 		muteVideo(document.getElementById("video"));
 		event.preventDefault();

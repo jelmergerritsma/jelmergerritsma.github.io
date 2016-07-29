@@ -155,7 +155,6 @@ body {
     font-family: 'Affogato-Light';
     font-size: 62.5%;
     position: relative;
-    /*background: url('../../assets/images/logo.png') center center fixed no-repeat;*/
     background-size: 60px 60px;
 }
 
@@ -237,6 +236,14 @@ button.menuButton {
     -webkit-animation: slideinFromRight .8s ease-out forwards .5s;
     -moz-animation: slideinFromRight .8s ease-out forwards .5s;
     animation: slideinFromRight .8s ease-out forwards .5s;
+}
+button.menuButton span {
+    display: inline-block;
+    transform: translateX(200px);
+    transition: all ease-out 240ms;
+}
+button.menuButton:hover span {
+    transform: translateX(0);
 }
 
 button .menu{
@@ -442,7 +449,11 @@ nav.open {
         -moz-transition: all 240ms ease-out;
         transition: all 240ms ease-out;
     }
-    .content > h1 {
+    .content > a {
+        color: #fff;
+        text-decoration: none;
+    }
+    .content a > h1 {
         -webkit-transform: translateX(-340px);
         -moz-transform: translateX(-340px);
         -ms-transform: translateX(-340px);
@@ -458,7 +469,7 @@ nav.open {
         padding-left: 40px;
         position: relative;
     }
-    .content > h1 svg {
+    .content a > h1 svg {
         position: absolute;
         left: 0;
         top: 0;
@@ -466,13 +477,18 @@ nav.open {
         -moz-transition: all 360ms ease-out;
         transition: all 360ms ease-out;
     }
-    .content > h1:hover svg {
+    .content a > h1 span {
+        display: inline-block;
+        transform: translateX(-340px);
+        transition: all ease-out 240ms;
+    }
+    .content a > h1:hover span {
+        transform: translateX(0);
+    }
+    .content a > h1:hover svg {
         transform: rotate(360deg);
     }
-        /*.content > h1 svg path {
-            fill: #c0392b;
-            stroke: transparent;
-        }*/
+
         
     .content .center {
         width: 770px;
@@ -489,7 +505,7 @@ nav.open {
         .content .center p {
             font-size: 2em;
             opacity: 0;
-            margin-top: 50px;
+            margin-top: 130px;
             -webkit-animation: fadeFromBottom .8s ease-out forwards .5s;
             -moz-animation: fadeFromBottom .8s ease-out forwards .5s;
             animation: fadeFromBottom .8s ease-out forwards .5s;
@@ -546,7 +562,7 @@ nav.open {
 .video.cd-intro-content .svg-wrapper {
   position: absolute;
   z-index: 1;
-  top: -100px;
+  top: -40px;
   left: 0;
   height: 100%;
   width: 100%;
