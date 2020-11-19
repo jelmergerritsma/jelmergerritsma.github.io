@@ -1,13 +1,21 @@
 <!doctype html>
 <html>
-	<head>
-    	<meta charset="utf-8">
-    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	</head>
-  	<body>
-		<div id="app">
-			<h1>test</h1>
-		</div>
-	</body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="https://unpkg.com/vue@next" as="script">
+  <link rel="preload" href="js/app.js" as="script">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div id="app">
+    <ol>
+      <song v-for="track in tracks" v-bind:track="track" v-bind:key="track.artist"></song>
+    </ol>
+  </div>
+</body>
+
 </html>
