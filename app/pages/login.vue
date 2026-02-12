@@ -8,12 +8,45 @@ const supabase = useSupabaseClient()
 const { getRedirectUrl } = useRedirectUrl()
 
 const state = reactive({
-  email: ""
+  email: "",
+  password: ""
 })
 
 const loading = ref(false)
 const errorMsg = ref("")
 const successMsg = ref("")
+const loginMethod = ref<"magic" | "password">("password") // Default to password
+
+const signInWithPassword = async () => {
+  if (!state.email || !state.password) {
+    errorMsg.value = t("email_password_required")
+    return
+  }
+
+  loading.value = true
+  errorMsg.value = ""
+  successMsg.value = ""
+
+  try {
+    const { error } = await supabase.auth.signInWithPassword({
+      email: state.email,
+      password: state.password
+    })
+
+    if (error) throw error
+
+    // Redirect on success
+    navigateTo("/")
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      errorMsg.value = err.message
+    } else {
+      errorMsg.value = t("error_occurred_login")
+    }
+  } finally {
+    loading.value = false
+  }
+}
 
 const sendMagicLink = async () => {
   if (!state.email) {
@@ -46,6 +79,14 @@ const sendMagicLink = async () => {
     loading.value = false
   }
 }
+
+const handleSubmit = () => {
+  if (loginMethod.value === "password") {
+    signInWithPassword()
+  } else {
+    sendMagicLink()
+  }
+}
 </script>
 
 <template>
@@ -63,10 +104,30 @@ const sendMagicLink = async () => {
 
       <!-- Form Card -->
       <div class="bg-white dark:bg-neutral-900 ">
+        <!-- Login Method Toggle -->
+        <div class="flex gap-2 mb-6 p-1 bg-neutral-100 dark:bg-neutral-800 rounded-2xl">
+          <button
+            type="button"
+            class="flex-1 py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-widest transition-all"
+            :class="loginMethod === 'password' ? 'bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white shadow-sm' : 'text-neutral-400'"
+            @click="loginMethod = 'password'"
+          >
+            {{ t('with_password') }}
+          </button>
+          <button
+            type="button"
+            class="flex-1 py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-widest transition-all"
+            :class="loginMethod === 'magic' ? 'bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white shadow-sm' : 'text-neutral-400'"
+            @click="loginMethod = 'magic'"
+          >
+            {{ t('with_magic_link') }}
+          </button>
+        </div>
+
         <UForm
           :state="state"
           class="space-y-8"
-          @submit="sendMagicLink"
+          @submit="handleSubmit"
         >
           <div
             v-if="errorMsg"
@@ -100,30 +161,49 @@ const sendMagicLink = async () => {
               />
             </div>
 
+            <!-- Password field - only show for password login -->
+            <div
+              v-if="loginMethod === 'password'"
+              class="space-y-3"
+            >
+              <label class="text-[10px] font-black uppercase tracking-widest text-neutral-400 pl-4 block">
+                {{ t('password') }}
+              </label>
+              <UInput
+                v-model="state.password"
+                type="password"
+                placeholder="••••••••"
+                size="xl"
+                icon="i-lucide-lock"
+                class="w-full"
+                :ui="{
+                  base: 'bg-neutral-50 dark:bg-neutral-800/50 px-6 py-4'
+                }"
+              />
+            </div>
+
             <UButton
               type="submit"
               size="xl"
               block
               :loading="loading"
-              icon="i-lucide-wand-2"
+              :icon="loginMethod === 'password' ? 'i-lucide-log-in' : 'i-lucide-wand-2'"
               class="py-4 font-black uppercase tracking-widest shadow-lg shadow-primary-500/20"
             >
-              {{ t('login_magic_link') }}
+              {{ loginMethod === 'password' ? t('login_button') : t('login_magic_link') }}
             </UButton>
+
+            <!-- Forgot password link - only show for password login -->
+            <NuxtLink
+              v-if="loginMethod === 'password'"
+              to="/password/reset"
+              class="block text-center text-xs text-neutral-400 hover:text-primary-500 transition-colors font-bold"
+            >
+              {{ t('forgot_password') }}
+            </NuxtLink>
           </div>
         </UForm>
       </div>
-
-      <!-- Sign Up Link -->
-      <p class="text-center text-xs text-neutral-400 font-bold">
-        {{ t("no_account") }}
-        <NuxtLink
-          to="/signup"
-          class="text-primary-500 hover:text-primary-600 ml-1 transition-colors"
-        >
-          {{ t("signup") }}
-        </NuxtLink>
-      </p>
     </div>
   </div>
 </template>
@@ -135,24 +215,24 @@ en:
   email: "Email"
   password: "Password"
   forgot_password: "Forgot Password"
-  no_account: "Don't have an account?"
-  signup: "Sign up"
   error_occurred_login: "An error occurred during login"
   email_required: "Email is required"
+  email_password_required: "Email and password are required"
   magic_link_sent: "Check your email for the magic link!"
-  login_magic_link: "Login with Magic Link"
-  or: "or"
+  login_magic_link: "Send Magic Link"
+  with_password: "Password"
+  with_magic_link: "Magic Link"
 nl:
   login_title: "Log in op je account"
   login_button: "Inloggen"
   email: "E-mailadres"
   password: "Wachtwoord"
   forgot_password: "Wachtwoord vergeten"
-  no_account: "Nog geen account?"
-  signup: "Aanmelden"
   error_occurred_login: "Er is een fout opgetreden tijdens het inloggen"
   email_required: "E-mailadres is verplicht"
+  email_password_required: "E-mailadres en wachtwoord zijn verplicht"
   magic_link_sent: "Check je e-mail voor de magische link!"
-  login_magic_link: "Inloggen met Magische Link"
-  or: "of"
+  login_magic_link: "Stuur Magische Link"
+  with_password: "Wachtwoord"
+  with_magic_link: "Magische Link"
 </i18n>

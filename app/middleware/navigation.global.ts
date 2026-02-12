@@ -1,7 +1,7 @@
 export default defineNuxtRouteMiddleware((to, from) => {
   if (import.meta.server) return
 
-  const EXCLUDED_PATHS = ["/login", "/signup"]
+  const EXCLUDED_PATHS = ["/login"]
   if (EXCLUDED_PATHS.includes(to.path) || EXCLUDED_PATHS.includes(from.path)) {
     // For auth pages, use a simple fade transition
     to.meta.pageTransition = { name: "fade", mode: "default" }

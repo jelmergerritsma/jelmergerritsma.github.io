@@ -97,7 +97,7 @@ export default defineNuxtConfig({
     redirectOptions: {
       login: "/login",
       callback: "/confirm",
-      exclude: ["/", "/signup", "/admin"]
+      exclude: ["/", "/admin"]
     },
     cookieOptions: {
       maxAge: 60 * 60 * 24 * 7,
