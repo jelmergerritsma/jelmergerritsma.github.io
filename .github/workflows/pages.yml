@@ -12,14 +12,13 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest  # Fixed: ubuntu-slim lacks required tools
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        # Removed: version: latest  <-- This was conflicting with package.json
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,7 +30,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: NUXT_APP_BASE_URL=/${{ github.event.repository.name }}/ pnpm build
+        run: pnpm build --preset github_pages  # Fixed: Uses Nuxt's official preset
         env:
           SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
@@ -46,7 +45,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest  # Fixed: was ubuntu-slim
     needs: build
     steps:
       - name: Deploy to GitHub Pages
