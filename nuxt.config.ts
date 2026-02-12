@@ -86,19 +86,19 @@ export default defineNuxtConfig({
           src: "icon.svg",
           sizes: "any",
           type: "image/svg+xml",
-          purpose: "any maskable"
+          purpose: "maskable"
         },
         {
           src: "manifest-icon-192.maskable.png",
           sizes: "192x192",
           type: "image/png",
-          purpose: "any maskable"
+          purpose: "maskable"
         },
         {
           src: "manifest-icon-512.maskable.png",
           sizes: "512x512",
           type: "image/png",
-          purpose: "any maskable"
+          purpose: "maskable"
         },
         {
           src: "apple-icon-180.png",

@@ -33,9 +33,9 @@ const navItems = [
 <template>
   <nav
     v-if="!isGameActive"
-    class="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-lg border-t border-neutral-200 dark:border-neutral-800 pb-safe relative z-50"
+    class="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-lg border-t border-neutral-200 dark:border-neutral-800 pb-safe relative z-50 transition-all duration-300"
   >
-    <div class=" px-4 h-20 flex items-center justify-between relative">
+    <div class="px-4 h-16 flex items-center justify-between relative">
       <!-- Main Nav Items (Left) -->
       <div class="flex gap-8 grow justify-center pr-8">
         <NuxtLink
