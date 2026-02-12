@@ -15,7 +15,7 @@ watch(user, (newUser) => {
 })
 
 const isMainPage = computed(() => {
-  const routesWithBottomNav = ["/", "/players", "/stats", "/stats/*", "/account"]
+  const routesWithBottomNav = ["/", "/players", "/stats", "/account"]
   return routesWithBottomNav.some((pattern) => {
     if (pattern.includes("*")) {
       const regex = new RegExp("^" + pattern.replace("*", ".*") + "$")

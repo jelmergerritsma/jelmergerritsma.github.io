@@ -33,7 +33,7 @@ const navItems = [
 <template>
   <nav
     v-if="!isGameActive"
-    class="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-lg border-t border-neutral-200 dark:border-neutral-800 pb-safe relative z-50 transition-all duration-300"
+    class="fixed bottom-0 left-0 right-0 bg-white/20 dark:bg-neutral-900/20 backdrop-blur-lg border-t border-neutral-200 dark:border-neutral-800 pb-safe z-50 transition-all duration-300"
   >
     <div class="px-4 h-16 flex items-center justify-between relative">
       <!-- Main Nav Items (Left) -->
