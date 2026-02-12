@@ -1,0 +1,45 @@
+{
+  "name": "30seconds",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev --host",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck",
+    "test": "vitest",
+    "test:component": "vitest run tests/components",
+    "test:e2e": "playwright test",
+    "generate:types": "supabase gen types typescript --project-id unrortmihjkxtrlqixuj > app/types/database.types.ts"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.89",
+    "@iconify-json/simple-icons": "^1.2.69",
+    "@nuxt/hints": "1.0.0-alpha.6",
+    "@nuxt/ui": "^4.2.1",
+    "@nuxtjs/i18n": "10.2.3",
+    "@nuxtjs/supabase": "^2.0.3",
+    "canvas-confetti": "^1.9.4",
+    "nuxt": "^4.3.0"
+  },
+  "devDependencies": {
+    "@iconify-json/circle-flags": "^1.2.10",
+    "@nuxt/eslint": "^1.14.0",
+    "@nuxt/test-utils": "^4.0.0",
+    "@playwright/test": "^1.58.2",
+    "@types/canvas-confetti": "^1.9.0",
+    "@vite-pwa/nuxt": "^1.1.1",
+    "@vue/test-utils": "^2.4.6",
+    "baseline-browser-mapping": "^2.9.19",
+    "eslint": "^9.39.2",
+    "happy-dom": "^20.6.1",
+    "playwright": "^1.58.2",
+    "supabase": "^2.76.3",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18",
+    "vue-tsc": "^3.2.4"
+  },
+  "packageManager": "pnpm@10.28.2"
+}
