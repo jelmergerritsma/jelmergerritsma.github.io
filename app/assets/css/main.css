@@ -1,0 +1,113 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans: 'Public Sans', sans-serif;
+
+  --color-green-50: #EFFDF5;
+  --color-green-100: #D9FBE8;
+  --color-green-200: #B3F5D1;
+  --color-green-300: #75EDAE;
+  --color-green-400: #00DC82;
+  --color-green-500: #00C16A;
+  --color-green-600: #00A155;
+  --color-green-700: #007F45;
+  --color-green-800: #016538;
+  --color-green-900: #0A5331;
+  --color-green-950: #052E16;
+
+  --ui-radius: 0.5rem;
+}
+
+/* Default Page Transition */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.3s ease-out;
+}
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* iOS Slide Parallel Transitions */
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-up-enter-active,
+.slide-up-leave-active,
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.4s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-color: var(--ui-bg);
+}
+
+/* Enable pointer events only for the active layers */
+.slide-right-enter-active,
+.slide-left-leave-active,
+.slide-down-enter-active,
+.slide-up-leave-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-down-leave-active,
+.slide-up-enter-active {
+  pointer-events: auto;
+}
+
+/* Global scrollbar hiding */
+::-webkit-scrollbar {
+  display: none !important;
+}
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* Base styles for pages */
+.flex-1.relative > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-left-enter-from {
+  transform: translateX(100%);
+}
+.slide-left-leave-to {
+  transform: translateX(-30%);
+  opacity: 0.8;
+}
+
+.slide-right-enter-from {
+  transform: translateX(-30%);
+  opacity: 0.8;
+}
+.slide-right-leave-to {
+  transform: translateX(100%);
+}
+
+/* Verticals */
+.slide-up-enter-from {
+  transform: translateY(100%);
+}
+.slide-up-leave-to {
+  opacity: 0.8;
+}
+
+.slide-down-enter-from {
+  opacity: 0.8;
+}
+.slide-down-leave-to {
+  transform: translateY(100%);
+}
