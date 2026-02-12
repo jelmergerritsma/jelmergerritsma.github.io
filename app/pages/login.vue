@@ -5,6 +5,7 @@ definePageMeta({
 
 const { t } = useI18n({ useScope: "local" })
 const supabase = useSupabaseClient()
+const { getRedirectUrl } = useRedirectUrl()
 
 const state = reactive({
   email: ""
@@ -28,7 +29,7 @@ const sendMagicLink = async () => {
     const { error } = await supabase.auth.signInWithOtp({
       email: state.email,
       options: {
-        emailRedirectTo: window.location.origin + "/confirm"
+        emailRedirectTo: getRedirectUrl("/confirm")
       }
     })
 

@@ -27,7 +27,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      workspaceUrl: "nexxtmove.nl"
+      workspaceUrl: "jelmergerritsma.github.io"
     }
   },
 

@@ -5,6 +5,7 @@ definePageMeta({
 
 const supabase = useSupabaseClient()
 const { t } = useI18n()
+const { getRedirectUrl } = useRedirectUrl()
 
 const state = reactive({
   email: ""
@@ -21,7 +22,7 @@ const requestResetPassword = async () => {
 
   try {
     const { error } = await supabase.auth.resetPasswordForEmail(state.email, {
-      redirectTo: `${window.location.origin}/password/update`
+      redirectTo: getRedirectUrl("/password/update")
     })
     if (error) throw error
     successMsg.value = t("check_email_confirmation")
