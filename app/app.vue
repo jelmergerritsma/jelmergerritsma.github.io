@@ -33,6 +33,7 @@ useHead({
 </script>
 
 <template>
+  <NuxtPwaManifest />
   <UApp>
     <div
       v-show="isInitialized"

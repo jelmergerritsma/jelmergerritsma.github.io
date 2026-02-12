@@ -26,10 +26,12 @@ export default defineNuxtConfig({
       meta: [
         { name: "apple-mobile-web-app-capable", content: "yes" },
         { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+        { name: "apple-mobile-web-app-title", content: "30 Seconds" },
+        { name: "format-detection", content: "telephone=no" },
         { name: "theme-color", content: "#0f172b" }
       ],
       link: [
-        { rel: "apple-touch-icon", href: "/apple-touch-icon.png" }
+        { rel: "apple-touch-icon", href: "/apple-icon-180.png" }
       ]
     }
   },
@@ -76,6 +78,9 @@ export default defineNuxtConfig({
       background_color: "#0f172b",
       display: "standalone",
       orientation: "portrait",
+      start_url: "/",
+      scope: "/",
+      id: "/",
       icons: [
         {
           src: "icon.svg",
@@ -84,17 +89,19 @@ export default defineNuxtConfig({
           purpose: "any maskable"
         },
         {
-          src: "pwa-192x192.png",
+          src: "manifest-icon-192.maskable.png",
           sizes: "192x192",
-          type: "image/png"
+          type: "image/png",
+          purpose: "any maskable"
         },
         {
-          src: "pwa-512x512.png",
+          src: "manifest-icon-512.maskable.png",
           sizes: "512x512",
-          type: "image/png"
+          type: "image/png",
+          purpose: "any maskable"
         },
         {
-          src: "apple-touch-icon.png",
+          src: "apple-icon-180.png",
           sizes: "180x180",
           type: "image/png"
         }
