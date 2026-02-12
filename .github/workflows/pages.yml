@@ -29,12 +29,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Get version
+        id: pkg
+        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
       - name: Build
-        run: pnpm build --preset github_pages  # Fixed: Uses Nuxt's official preset
+        run: pnpm build --preset github_pages
         env:
           SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          NUXT_PUBLIC_APP_VERSION: ${{ steps.pkg.outputs.version }}.${{ github.run_number }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

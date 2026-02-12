@@ -40,7 +40,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      workspaceUrl: "jelmergerritsma.github.io"
+      workspaceUrl: "jelmergerritsma.github.io",
+      appVersion: "v0.0.0"
     }
   },
 

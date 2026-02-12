@@ -87,6 +87,13 @@ const handleSubmit = () => {
     sendMagicLink()
   }
 }
+
+const config = useRuntimeConfig()
+const appVersion = computed(() => {
+  const version = config.public.appVersion
+  if (version === "v0.0.0") return "1.0.0-DEV"
+  return `VERSION ${version}`
+})
 </script>
 
 <template>
@@ -204,6 +211,13 @@ const handleSubmit = () => {
           </div>
         </UForm>
       </div>
+    </div>
+
+    <!-- Version Footer -->
+    <div class="mt-auto py-8 text-center pointer-events-none">
+      <span class="text-[10px] font-black uppercase tracking-[0.4em] text-black/20 dark:text-white/10 drop-shadow-[1px_1px_0px_rgba(255,255,255,0.4)] dark:drop-shadow-[1px_1px_0px_rgba(0,0,0,0.6)]">
+        {{ appVersion }}
+      </span>
     </div>
   </div>
 </template>
