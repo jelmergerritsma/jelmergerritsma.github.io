@@ -34,6 +34,7 @@ useHead({
 
 <template>
   <NuxtPwaManifest />
+  <PwaUpdatePrompt />
   <UApp>
     <div
       v-show="isInitialized"

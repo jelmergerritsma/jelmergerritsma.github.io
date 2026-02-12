@@ -69,7 +69,7 @@ export default defineNuxtConfig({
   },
 
   pwa: {
-    registerType: "autoUpdate",
+    registerType: "prompt",
     manifest: {
       name: "30 Seconds",
       short_name: "30Sec",
@@ -109,7 +109,8 @@ export default defineNuxtConfig({
     },
     workbox: {
       navigateFallback: "/",
-      globPatterns: ["**/*.{js,css,html,png,svg,ico}"]
+      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+      cleanupOutdatedCaches: true
     },
     devOptions: {
       enabled: false
