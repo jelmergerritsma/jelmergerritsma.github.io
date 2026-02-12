@@ -3,9 +3,8 @@ name: Deploy Nuxt to GitHub Pages
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch:  # Allows manual trigger
+  workflow_dispatch:
 
-# Set permissions for Pages deployment
 permissions:
   contents: read
   pages: write
@@ -20,8 +19,7 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: latest
+        # Removed: version: latest  <-- This was conflicting with package.json
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -33,7 +31,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: NUXT_APP_BASE_URL=/${{ github.event.repository.name }}/ pnpm build  # Replace with --preset github_pages if preferred
+        run: NUXT_APP_BASE_URL=/${{ github.event.repository.name }}/ pnpm build
         env:
           SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
