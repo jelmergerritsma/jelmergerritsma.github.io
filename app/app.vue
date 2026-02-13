@@ -9,7 +9,7 @@ isStandalone.value = window.matchMedia("(display-mode: standalone)").matches
   || navigator.standalone === true
 
 // Always fetch once to resolve initial auth/profile state
-await fetchProfile(false, true)
+await fetchProfile()
 
 // watch(user, (newUser, oldUser) => {
 //   const isDeepEqual = JSON.stringify(newUser) === JSON.stringify(oldUser)

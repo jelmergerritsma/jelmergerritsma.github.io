@@ -9,12 +9,8 @@ export const useProfile = () => {
   const loading = useState("profile-loading", () => false)
   const isInitialized = useState("profile-init", () => false)
 
-  const fetchProfile = async (force = false, fromApp = false): Promise<void> => {
+  const fetchProfile = async (force = false): Promise<void> => {
     // If a fetch is already in progress, wait for it instead of starting a new one
-
-    if (!fromApp) {
-      console.trace("📋 useProfile.ts:15 FETCH PROFILE", { force, fromApp })
-    }
 
     if (fetchPromise && !force) {
       return fetchPromise
