@@ -86,7 +86,8 @@ const deleteWord = async () => {
   }
 }
 
-onMounted(fetchWords)
+fetchWords()
+
 watch([wordLanguage, page], fetchWords)
 
 const onSearch = () => {

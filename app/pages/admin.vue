@@ -66,10 +66,8 @@ const fetchStats = async () => {
   }
 }
 
-onMounted(async () => {
-  await checkAdmin()
-  loading.value = false
-})
+await checkAdmin()
+loading.value = false
 </script>
 
 <template>

@@ -110,7 +110,7 @@ const deleteGame = async () => {
   }
 }
 
-onMounted(fetchGames)
+fetchGames()
 
 defineExpose({ fetchGames })
 </script>

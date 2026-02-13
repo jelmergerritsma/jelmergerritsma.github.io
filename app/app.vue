@@ -1,18 +1,24 @@
 <script setup>
-const user = useSupabaseUser()
+// const user = useSupabaseUser()
 const route = useRoute()
 const { fetchProfile, isInitialized } = useProfile()
 
-onMounted(async () => {
-  // Always fetch once to resolve initial auth/profile state
-  await fetchProfile()
-})
+const isStandalone = ref(false)
 
-watch(user, (newUser) => {
-  if (newUser) {
-    fetchProfile()
-  }
-})
+isStandalone.value = window.matchMedia("(display-mode: standalone)").matches
+  || navigator.standalone === true
+
+// Always fetch once to resolve initial auth/profile state
+await fetchProfile(false, true)
+
+// watch(user, (newUser, oldUser) => {
+//   const isDeepEqual = JSON.stringify(newUser) === JSON.stringify(oldUser)
+
+//   if (newUser && !isDeepEqual) {
+//     console.info("📋 app.vue:18 FETCH AGAIN")
+//     fetchProfile()
+//   }
+// })
 
 const isMainPage = computed(() => {
   const routesWithBottomNav = ["/", "/players", "/stats", "/account"]
@@ -27,7 +33,7 @@ const isMainPage = computed(() => {
 
 useHead({
   bodyAttrs: {
-    class: "h-full overflow-hidden bg-gray-50 dark:bg-default"
+    class: "bg-gray-50 dark:bg-default"
   }
 })
 </script>
@@ -38,50 +44,28 @@ useHead({
   <UApp>
     <div
       v-show="isInitialized"
-      class="h-full flex flex-col overflow-hidden"
-      :class="{ 'bg-gray-50 dark:bg-default': isMainPage }"
+      class="h-dvh min-h-dvh overflow-hidden grid grid-cols-1 pb-safe-top"
+      :class="isStandalone ? 'grid-rows-[1fr_5.5rem]' : 'grid-rows-[1fr_4rem]'"
     >
-      <div class="flex-1 relative overflow-hidden">
-        <NuxtPage
-          :transition="route.meta.pageTransition ?? { name: 'slide-left', mode: 'default' }"
-        />
+      <div class="row-start-1 col-start-1 row-span-2 overflow-y-auto relative">
+        <NuxtPage :transition="{ name: 'slide-left', mode: 'default' }" />
       </div>
-      <AppBottomNav v-if="isMainPage" />
-    </div>
 
-    <!-- Full screen loader during initialization -->
-    <div
-      v-if="!isInitialized"
-      class="h-full w-full flex items-center justify-center bg-white dark:bg-neutral-900"
-    >
-      <div class="flex flex-col items-center gap-4">
-        <UIcon
-          name="i-lucide-loader-2"
-          class="animate-spin text-4xl text-primary-500"
-        />
-        <span class="text-xs font-black uppercase tracking-widest text-neutral-400">Loading Session...</span>
+      <AppBottomNav v-if="isMainPage" />
+
+      <!-- Full screen loader during initialization -->
+      <div
+        v-show="!isInitialized"
+        class="row-start-1 col-start-1 row-span-2 h-full w-full flex items-center justify-center bg-white dark:bg-neutral-900 relative z-100"
+      >
+        <div class="flex flex-col items-center gap-4">
+          <UIcon
+            name="i-lucide-loader-2"
+            class="animate-spin text-4xl text-primary-500"
+          />
+          <span class="text-xs font-black uppercase tracking-widest text-neutral-400">Loading Session...</span>
+        </div>
       </div>
     </div>
   </UApp>
 </template>
-
-<style>
-:root {
-  --safe-area-top: env(safe-area-inset-top);
-  --safe-area-bottom: env(safe-area-inset-bottom);
-}
-
-.safe-area-inset {
-  padding-top: var(--safe-area-top);
-}
-
-html, body, #__nuxt {
-  height: 100%;
-}
-
-/* Ensure pages have a background for transitions */
-.flex-1.relative > * {
-  background-color: var(--ui-bg);
-  min-height: 100%;
-}
-</style>

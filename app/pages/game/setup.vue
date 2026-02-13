@@ -29,11 +29,10 @@ if (route.query.assignments) {
 }
 
 // Redirect if no group_id provided
-onMounted(() => {
-  if (!groupId.value) {
-    router.push("/?action=new-room")
-  }
-})
+
+if (!groupId.value) {
+  router.push("/?action=new-room")
+}
 
 const maxPossibleTeams = computed(() => Math.floor(selectedPlayers.value.length / 2))
 

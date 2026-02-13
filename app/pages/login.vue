@@ -97,7 +97,7 @@ const appVersion = computed(() => {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col bg-neutral-50 dark:bg-neutral-950 p-4 pt-safe md:p-8">
+  <div class="flex flex-col p-4 pt-safe md:p-8">
     <div class="flex-1 flex flex-col pt-[10vh] max-w-sm mx-auto w-full space-y-12">
       <!-- Header -->
       <div class="space-y-4 text-center">

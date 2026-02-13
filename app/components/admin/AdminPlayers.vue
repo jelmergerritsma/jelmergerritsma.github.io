@@ -78,7 +78,7 @@ const deletePlayer = async () => {
   }
 }
 
-onMounted(fetchPlayers)
+fetchPlayers()
 
 defineExpose({ fetchPlayers })
 </script>

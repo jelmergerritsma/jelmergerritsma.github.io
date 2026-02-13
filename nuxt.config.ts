@@ -20,14 +20,15 @@ export default defineNuxtConfig({
   },
 
   app: {
-    pageTransition: { name: "slide-left", mode: "default" },
+    // pageTransition: { name: "slide-left", mode: "default" },
     head: {
-      viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover",
+      viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover, minimal-ui=true",
       meta: [
         { name: "apple-mobile-web-app-capable", content: "yes" },
+        { name: "mobile-web-app-capable", content: "yes" },
         { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+        { name: "apple-touch-fullscreen", content: "yes" },
         { name: "apple-mobile-web-app-title", content: "30 Seconds" },
-        { name: "format-detection", content: "telephone=no" },
         { name: "theme-color", content: "#0f172b" }
       ],
       link: [
@@ -73,11 +74,12 @@ export default defineNuxtConfig({
     registerType: "prompt",
     manifest: {
       name: "30 Seconds",
-      short_name: "30Sec",
+      short_name: "30 Seconds",
       description: "The ultimate 30 Seconds word guessing game",
       theme_color: "#0f172b",
       background_color: "#0f172b",
-      display: "standalone",
+      display: "fullscreen",
+      display_override: ["fullscreen", "standalone"],
       orientation: "portrait",
       start_url: "/",
       scope: "/",

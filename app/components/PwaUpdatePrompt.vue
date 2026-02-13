@@ -3,42 +3,49 @@ const { $pwa } = useNuxtApp()
 const { t } = useI18n()
 const toast = useToast()
 
-onMounted(() => {
-  if (import.meta.client && $pwa) {
-    // Check for updates every 30 minutes
-    const interval = setInterval(async () => {
-      if ('serviceWorker' in navigator) {
-        const registration = await navigator.serviceWorker.getRegistration()
-        if (registration) {
-          await registration.update()
-        }
-      }
-    }, 30 * 60 * 1000)
+const registration = ref<ServiceWorkerRegistration | null | undefined>(null)
 
-    onUnmounted(() => clearInterval(interval))
-
-    // Watch for the needRefresh property
-    watch(() => $pwa.needRefresh, (needRefresh) => {
-      if (needRefresh) {
-        toast.add({
-          title: t('update_available_title'),
-          description: t('update_available_description'),
-          color: 'primary',
-          duration: 0,
-          id: 'pwa-update',
-          actions: [
-            {
-              label: t('update_now'),
-              click: () => {
-                $pwa.updateServiceWorker()
-              }
-            }
-          ]
-        })
+if ($pwa) {
+  // Check for updates immediately on mount
+  const checkForUpdates = async () => {
+    if ("serviceWorker" in navigator) {
+      const reg = await navigator.serviceWorker.getRegistration()
+      registration.value = reg
+      if (reg) {
+        await reg.update()
       }
-    }, { immediate: true })
+    }
   }
-})
+
+  checkForUpdates()
+
+  // Check for updates every 15 minutes
+  const interval = setInterval(checkForUpdates, 15 * 60 * 1000)
+
+  onUnmounted(() => clearInterval(interval))
+
+  // Watch for the needRefresh property
+  watch(() => $pwa.needRefresh, (needRefresh) => {
+    if (needRefresh) {
+      toast.add({
+        title: t("update_available_title"),
+        description: t("update_available_description"),
+        color: "primary",
+        duration: 0,
+        id: "pwa-update",
+        actions: [
+          {
+            label: t("update_now"),
+            onClick: async () => {
+              await $pwa.updateServiceWorker()
+              window.location.reload()
+            }
+          }
+        ]
+      })
+    }
+  }, { immediate: true })
+}
 </script>
 
 <template>

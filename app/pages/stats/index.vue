@@ -100,7 +100,7 @@ const winsLeaderboard = computed(() => {
 </script>
 
 <template>
-  <UContainer class="h-full flex flex-col p-6 space-y-8 overflow-y-auto min-h-0 pb-32">
+  <UContainer class="flex flex-col p-6 space-y-8 overflow-y-auto min-h-0 ">
     <header class="flex items-center justify-between">
       <div>
         <h1 class="text-3xl font-black tracking-tighter">
