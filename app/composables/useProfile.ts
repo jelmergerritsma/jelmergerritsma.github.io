@@ -110,8 +110,8 @@ export const useProfile = () => {
   }
 
   watch(user, (newUser, oldUser) => {
-    if (!oldUser) return
-
+    // If they just logged in (newUser exists, oldUser was null), fetch profile
+    // Or if the user object changed deeply
     const isDeepEqual = JSON.stringify(newUser) === JSON.stringify(oldUser)
 
     if (newUser && !isDeepEqual) {

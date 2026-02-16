@@ -1,5 +1,4 @@
 <script setup>
-// const user = useSupabaseUser()
 const route = useRoute()
 const { fetchProfile, isInitialized } = useProfile()
 
@@ -10,15 +9,6 @@ isStandalone.value = window.matchMedia("(display-mode: standalone)").matches
 
 // Always fetch once to resolve initial auth/profile state
 await fetchProfile()
-
-// watch(user, (newUser, oldUser) => {
-//   const isDeepEqual = JSON.stringify(newUser) === JSON.stringify(oldUser)
-
-//   if (newUser && !isDeepEqual) {
-//     console.info("📋 app.vue:18 FETCH AGAIN")
-//     fetchProfile()
-//   }
-// })
 
 const isMainPage = computed(() => {
   const routesWithBottomNav = ["/", "/players", "/stats", "/account"]

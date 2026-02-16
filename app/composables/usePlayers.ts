@@ -16,6 +16,8 @@ export const usePlayers = () => {
       await fetchProfile()
     }
 
+    let results: Database["public"]["Tables"]["players"]["Row"][] = []
+
     if (groupId) {
       // Fetch players specifically in this group
       const { data, error } = await supabase
@@ -29,27 +31,39 @@ export const usePlayers = () => {
         console.error("fetchPlayers (group) error:", error)
         throw error
       }
-      return data?.map(d => d.players).filter((p): p is NonNullable<typeof p> => !!p) || []
-    }
+      results = data?.map(d => d.players).filter((p): p is Database["public"]["Tables"]["players"]["Row"] => !!p) || []
+    } else {
+      let query = supabase.from("players").select("*")
 
-    let query = supabase.from("players").select("*")
-
-    // If not admin, only show players created by user or linked to their email
-    if (!isAdmin.value) {
-      const filters = [`user_id.eq.${currentUser.id}`]
-      if (currentUser.email) {
-        filters.push(`email.eq.${currentUser.email}`)
+      // If not admin, only show players created by user or linked to their email
+      if (!isAdmin.value) {
+        const filters = [`user_id.eq.${currentUser.id}`]
+        if (currentUser.email) {
+          filters.push(`email.eq.${currentUser.email}`)
+        }
+        query = query.or(filters.join(","))
       }
-      query = query.or(filters.join(","))
+
+      const { data, error } = await query.order("name")
+
+      if (error) {
+        console.error("fetchPlayers error:", error)
+        throw error
+      }
+      results = (data || []) as Database["public"]["Tables"]["players"]["Row"][]
     }
 
-    const { data, error } = await query.order("name")
-
-    if (error) {
-      console.error("fetchPlayers error:", error)
-      throw error
+    // Ensure the current user's profile is ALWAYS included in the results.
+    // This solves the issue where you navigate to a room but your own player
+    // record isn't in the membership list yet.
+    if (profile.value) {
+      const exists = results.some(p => p.id === profile.value?.id)
+      if (!exists) {
+        results.unshift(profile.value)
+      }
     }
-    return data
+
+    return results
   }
 
   const addPlayer = async (name: string, email?: string, groupId?: string) => {

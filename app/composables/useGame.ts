@@ -13,6 +13,13 @@ export const useGame = () => {
       throw new Error("You must be logged in to create a group")
     }
 
+    const { fetchProfile, profile } = useProfile()
+
+    // Ensure the current user has a synchronized player record
+    if (!profile.value) {
+      await fetchProfile()
+    }
+
     loading.value = true
     try {
       // 1. Create the group
@@ -27,16 +34,13 @@ export const useGame = () => {
 
       if (groupError || !group) throw groupError || new Error("Failed to create group")
 
-      // 2. Add creator as first member if they have a player record
-      const { data: creatorPlayer } = await supabase
-        .from("players")
-        .select("id")
-        .eq("user_id", currentUser.id)
-        .maybeSingle()
+      // 2. Add creator as first member
+      // Use the profile record we just (re)fetched to get the correct player ID
+      const creatorPlayerId = profile.value?.id
 
       const finalPlayerIds = [...playerIds]
-      if (creatorPlayer && !finalPlayerIds.includes(creatorPlayer.id)) {
-        finalPlayerIds.push(creatorPlayer.id)
+      if (creatorPlayerId && !finalPlayerIds.includes(creatorPlayerId)) {
+        finalPlayerIds.push(creatorPlayerId)
       }
 
       if (finalPlayerIds.length > 0) {
@@ -63,6 +67,13 @@ export const useGame = () => {
     const currentUser = authUser || user.value
 
     if (!currentUser) return []
+
+    const { fetchProfile, profile } = useProfile()
+
+    // Ensure profile is synced before we check for group memberships
+    if (!profile.value) {
+      await fetchProfile()
+    }
 
     // 1. Find the player record for the current user
     const { data: player } = await supabase
